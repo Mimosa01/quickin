@@ -1,11 +1,9 @@
-import type { CommandBus } from "../commands/commandBus";
 import type { EventBus, EventMap } from "../commands/eventBus";
 import type ShapeManager from "./shapeManager";
 import HitBoxUI from "../ui/hitBoxUI";
 
 type HitBoxManagerProps = {
   eventBus: EventBus<EventMap>;
-  commandBus: CommandBus;
   shapeManager: ShapeManager;
   viewport: SVGGElement;
 }
@@ -14,13 +12,11 @@ export default class HitBoxManager {
   private currentSelection: SVGElement | null = null;
   private ui: HitBoxUI = new HitBoxUI();
   private eventBus: EventBus<EventMap>;
-  private commandBus: CommandBus;
   private shapeManager: ShapeManager;
   private viewport: SVGGElement;
 
-  constructor ({ eventBus, commandBus, shapeManager, viewport }: HitBoxManagerProps) {
+  constructor ({ eventBus, shapeManager, viewport }: HitBoxManagerProps) {
     this.eventBus = eventBus;
-    this.commandBus = commandBus;
     this.shapeManager = shapeManager;
     this.viewport = viewport;
 

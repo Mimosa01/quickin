@@ -24,7 +24,7 @@ export default class SceneUI {
   private shapes: Map<string, IRenderableShape> = new Map();
   private hitBox: HitBoxManager;
 
-  constructor ({ container, handlers, eventBus, shapeManager, commandBus }: SceneProps) {
+  constructor ({ container, handlers, eventBus, shapeManager }: SceneProps) {
     this.shapeManager = shapeManager;
     this.eventBus = eventBus;
     this.handlers = handlers;
@@ -35,7 +35,6 @@ export default class SceneUI {
       eventBus: eventBus,
       shapeManager: shapeManager,
       viewport: this.viewport,
-      commandBus: commandBus
     })
 
     this.scene.setAttribute("width", "100%");

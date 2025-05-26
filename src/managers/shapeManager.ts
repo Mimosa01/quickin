@@ -70,11 +70,11 @@ export default class ShapeManager {
     this.eventBus.emit("shape:selected", this.nullShape);
   }
 
-  getProperties<T extends keyof ShapeMap>(type: T): PropertiesByType<T> {
+  getProperties<T extends keyof ShapeMap>(_type: T): PropertiesByType<T> {
     return this.strategy.getProperties() as PropertiesByType<T>;
   }  
 
-  getSetters<T extends keyof ShapeMap>(type: T): SetterByType<T> {
+  getSetters<T extends keyof ShapeMap>(_type: T): SetterByType<T> {
     return this.strategy.getSetters() as SetterByType<T>;
   }
 

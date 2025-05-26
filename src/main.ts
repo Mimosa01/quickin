@@ -1,4 +1,3 @@
-import { AddShapeCommand } from "./commands/addShapeCommand";
 import { AddShapeCommandHandler } from "./commands/addShapeCommandHandler";
 import { CommandBus } from "./commands/commandBus";
 import { EventBus } from "./commands/eventBus";
@@ -42,3 +41,7 @@ commandBus.register("MoveCommand", new MoveCommandHandler(manager));
 rectBtn?.addEventListener("click", () => {
   toolState.setTool('rectangle');
 });
+
+void layersWindow;
+void inspector;
+void scene;
