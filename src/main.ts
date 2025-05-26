@@ -1,7 +1,10 @@
+import { AddShapeCommand } from "./commands/addShapeCommand";
 import { AddShapeCommandHandler } from "./commands/addShapeCommandHandler";
 import { CommandBus } from "./commands/commandBus";
 import { EventBus } from "./commands/eventBus";
+import MoveCommand from "./commands/MoveCommand";
 import MoveCommandHandler from "./commands/MoveCommandHandler";
+import { SelectCommand } from "./commands/selectCommand";
 import { SelectCommandHandler } from "./commands/selectCommandHandler";
 import InspectorProperties from "./managers/inspectorProperties";
 import LayersWindow from "./managers/layersWindow";
@@ -34,9 +37,9 @@ const scene = new SceneUI({
   commandBus: commandBus
 });
 
-commandBus.register("SelectCommand", new SelectCommandHandler(manager));
-commandBus.register("AddShapeCommand", new AddShapeCommandHandler(manager));
-commandBus.register("MoveCommand", new MoveCommandHandler(manager));
+commandBus.register(SelectCommand.type, new SelectCommandHandler(manager));
+commandBus.register(AddShapeCommand.type, new AddShapeCommandHandler(manager));
+commandBus.register(MoveCommand.type, new MoveCommandHandler(manager));
 
 rectBtn?.addEventListener("click", () => {
   toolState.setTool('rectangle');

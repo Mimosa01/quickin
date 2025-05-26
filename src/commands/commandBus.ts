@@ -8,7 +8,9 @@ export class CommandBus {
   }
 
   execute(command: ICommand): void {
-    const handler = this.handlers.get(command.constructor.name);
+    const commandName = (command.constructor as any).type;
+
+    const handler = this.handlers.get(commandName);
     if (handler) {
       try {
         handler.execute(command);

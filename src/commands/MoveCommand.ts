@@ -7,6 +7,7 @@ type MoveCommandProps = {
 }
 
 export default class MoveCommand implements ICommand {
+  static type = 'MoveCommand';
   readonly from: Point;
   readonly to: Point;
 
