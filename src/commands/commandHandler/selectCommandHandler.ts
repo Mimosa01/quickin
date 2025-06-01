@@ -1,6 +1,6 @@
-import type { ICommandHandler, ICommand } from "../interfaces/command.interface";
-import type ShapeManager from "../managers/shapeManager";
-import type { SelectCommand } from "./selectCommand";
+import type { ICommandHandler, ICommand } from "../../interfaces/command.interface";
+import type ShapeManager from "../../managers/shapeManager";
+import type { SelectCommand } from "../command/selectCommand";
 
 export class SelectCommandHandler implements ICommandHandler<ICommand> {
   private shapeManager: ShapeManager;

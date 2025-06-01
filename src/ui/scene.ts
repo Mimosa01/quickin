@@ -45,8 +45,7 @@ export default class SceneUI {
     this.container.appendChild(this.scene);
 
     this.eventBus.on("shape:created", () => {
-      const type = this.shapeManager.getType();
-      const props = this.shapeManager.getProperties(type);
+      const props = this.shapeManager.getProperties();
       const renderable = ShapeFactory.create(props);
       this.shapes.set(props.general.id, renderable);
 
@@ -59,9 +58,7 @@ export default class SceneUI {
 
     this.eventBus.on("shape:updated", ({ id }) => {
       const shape = this.shapes.get(id);
-      const type = this.shapeManager.getType();
-      shape?.update(shapeManager.getProperties(type));
-      this.hitBox.updateUI();
+      shape?.update(this.shapeManager.getProperties());
     });
   }
 }

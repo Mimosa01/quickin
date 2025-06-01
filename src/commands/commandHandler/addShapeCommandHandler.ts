@@ -1,6 +1,6 @@
-import type { ICommandHandler } from "../interfaces/command.interface";
-import type ShapeManager from "../managers/shapeManager";
-import { AddShapeCommand } from "./addShapeCommand";
+import type { ICommandHandler } from "../../interfaces/command.interface";
+import type ShapeManager from "../../managers/shapeManager";
+import type { AddShapeCommand } from "../command/addShapeCommand";
 
 export class AddShapeCommandHandler implements ICommandHandler<AddShapeCommand> {
   private shapeManager: ShapeManager;

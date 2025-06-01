@@ -10,6 +10,10 @@ export default class NullShapeStrategy implements IShapeStrategy<INullShape, INu
         name: 'NullShape',
         type: "NullShape",
         zIndex: -1
+      },
+      position: {
+        x: 0,
+        y: 0
       }
     }
   }

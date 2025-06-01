@@ -38,7 +38,7 @@ export default class InputField implements IUIElement {
       let value: string | number = target.value;
       
       if (type === 'number') {
-        value = Number(value);
+        value = Math.round(Number(value));
         if (isNaN(value)) return; // защита от ошибок
       }
     

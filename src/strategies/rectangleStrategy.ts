@@ -39,14 +39,14 @@ export default class RectangleStrategy implements IShapeStrategy<IRectangle, IRe
       },
       position: {
         x: (val: number) => {
-          this.shape.x = val;
+          this.shape.x = Math.round(val);
         },
-        y: (val: number) => this.shape.y = val,
+        y: (val: number) => this.shape.y = Math.round(val),
       },
       transform: {
-        width: (val: number) => this.shape.width = val,
-        height: (val: number) => this.shape.height = val,
-        cornerRadius: (val: number) => this.shape.cornerRadius = val,
+        width: (val: number) => this.shape.width = Math.round(val),
+        height: (val: number) => this.shape.height = Math.round(val),
+        cornerRadius: (val: number) => this.shape.cornerRadius = Math.round(val),
       },
       fill: {
         fill: (val: string) => {

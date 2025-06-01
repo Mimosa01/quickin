@@ -1,4 +1,4 @@
-import toolState from "../managers/toolState";
+import toolState from "../../managers/toolState";
 
 export class SelectCommand {
   static type = 'SelectCommand';

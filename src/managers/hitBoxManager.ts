@@ -1,6 +1,7 @@
 import type { EventBus, EventMap } from "../commands/eventBus";
 import type ShapeManager from "./shapeManager";
 import HitBoxUI from "../ui/hitBoxUI";
+import type { IRectangle } from "../interfaces/rectangle.interface";
 
 type HitBoxManagerProps = {
   eventBus: EventBus<EventMap>;
@@ -23,6 +24,10 @@ export default class HitBoxManager {
     this.eventBus.on("shape:selected", () => {
       this.selectShape();
     })
+
+    this.eventBus.on("shape:updated", () => {
+      this.selectShape();
+    })
   }
 
   selectShape () {
@@ -31,8 +36,8 @@ export default class HitBoxManager {
     
     switch (type) {
       case 'Rectangle':
-        const props = this.shapeManager.getProperties(type);
-        const selection = this.ui.hitBoxRectangle(props);
+        const props = this.shapeManager.getProperties();
+        const selection = this.ui.hitBoxRectangle(props as IRectangle);
         this.viewport.append(selection);
         this.currentSelection = selection;
         break;
@@ -44,9 +49,5 @@ export default class HitBoxManager {
       this.currentSelection.parentNode.removeChild(this.currentSelection);
     }
     this.currentSelection = null;
-  }
-
-  updateUI (): void {
-    this.selectShape();
   }
 }

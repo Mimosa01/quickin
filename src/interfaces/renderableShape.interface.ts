@@ -1,6 +1,6 @@
-import type { AllProperties } from "./shapeDifinition.interface";
+import type { IShapeProperties } from "./shape.interface";
 
 export interface IRenderableShape {
   element: SVGElement;
-  update(props: AllProperties): void;
+  update(props: IShapeProperties): void;
 }

@@ -4,6 +4,10 @@ export interface INullShape {
     name: string;
     type: 'NullShape',
     zIndex: number
+  },
+  position: {
+    x: number,
+    y: number
   }
 };
 

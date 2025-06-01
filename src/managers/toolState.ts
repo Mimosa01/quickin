@@ -1,10 +1,9 @@
 export type ToolType = "select" | "rectangle" | "idle";
-export type ToolMode = "move" | "idle";
+export type ToolMode = "move" | "resize" | "idle";
 
 class ToolState {
   private toolType: ToolType = "idle";
   private toolMode: ToolMode = "idle";
-  private pendingMoveStart: boolean = false;
 
   constructor () {}
 
@@ -30,18 +29,6 @@ class ToolState {
 
   clearMode (): void {
     this.toolMode = "idle";
-  }
-
-  setPendingMoveStart(value: boolean) {
-    this.pendingMoveStart = value;
-  }
-
-  getPendingMoveStart() {
-    return this.pendingMoveStart;
-  }
-
-  clearPendingMoveStart() {
-    this.pendingMoveStart = false;
   }
 }
 

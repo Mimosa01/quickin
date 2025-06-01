@@ -60,7 +60,6 @@ export type AllShapes = InstanceType<ShapeEntry['shape']>;
 export type AllProperties = ShapeEntry['props'];
 export type AllSetters = ShapeEntry['setters'];
 
-// ✅ Централизованная функция для получения стратегии
 export function getStrategyForShape(
   shape: { type: keyof typeof shapeRegistry }
 ): IShapeStrategy<AllProperties, AllSetters> {

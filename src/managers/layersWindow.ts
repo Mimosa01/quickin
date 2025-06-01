@@ -1,6 +1,6 @@
 import { CommandBus } from "../commands/commandBus";
 import type { EventBus, EventMap } from "../commands/eventBus";
-import { SelectCommand } from "../commands/selectCommand";
+import { SelectCommand } from "../commands/command/selectCommand";
 import ListObjects from "../ui/listObjects";
 
 export default class LayersWindow {

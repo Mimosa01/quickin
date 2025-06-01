@@ -1,5 +1,5 @@
 import type { EventBus, EventMap } from "../commands/eventBus";
-import type { Point } from "../interfaces/point";
+import type { IShapeProperties, IShapeSetters } from "../interfaces/shape.interface";
 import {
   type AllShapes,
   type AllProperties,
@@ -7,9 +7,6 @@ import {
   shapeRegistry,
   getStrategyForShape,
   type ShapeType,
-  type SetterByType,
-  type ShapeMap,
-  type PropertiesByType,
 } from "../interfaces/shapeDifinition.interface";
 import type { IShapeStrategy } from "../interfaces/shapeStrategy.interface";
 import type NullShape from "../shapes/nullShape";
@@ -26,7 +23,6 @@ export default class ShapeManager {
   constructor(eventBus: EventBus<EventMap>) {
     this.eventBus = eventBus;
 
-    // const nullShape = new shapeRegistry.NullShape.shape();
     this.selectedShape = this.nullShape;
     this.strategy = shapeRegistry.NullShape.strategyFactory();
 
@@ -64,18 +60,17 @@ export default class ShapeManager {
   }
 
   unselect(): void {
-    // const nullShape = new shapeRegistry.NullShape.shape();
     this.selectedShape = this.nullShape;
     this.strategy = shapeRegistry.NullShape.strategyFactory();
-    this.eventBus.emit("shape:selected", this.nullShape);
+    this.eventBus.emit("shape:selected", { id: this.selectedShape.id });
   }
 
-  getProperties<T extends keyof ShapeMap>(_type: T): PropertiesByType<T> {
-    return this.strategy.getProperties() as PropertiesByType<T>;
-  }  
+  getProperties(): IShapeProperties {
+    return this.strategy.getProperties();
+  } 
 
-  getSetters<T extends keyof ShapeMap>(_type: T): SetterByType<T> {
-    return this.strategy.getSetters() as SetterByType<T>;
+  getSetters(): IShapeSetters {
+    return this.strategy.getSetters()
   }
 
   getAllShapes(): AllShapes[] {
@@ -88,17 +83,6 @@ export default class ShapeManager {
 
   getCurrentId (): string {
     return this.selectedShape.id;
-  }
-
-  getShapePosition (): Point{
-    if (this.selectedShape.type === "NullShape") {
-      throw new Error("No shape selected");
-    }
-
-    return {
-      x: this.getProperties(this.selectedShape.type).position.x,
-      y: this.getProperties(this.selectedShape.type).position.y
-    }
   }
 
   private generateName(type: string): string {
